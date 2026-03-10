@@ -1,5 +1,5 @@
 DO $$
--- IMMUTABLEa funçao randon gera valores reais no intervalo 0 <= n < 1 
+-- IMMUTABLE a funçao randon gera valores reais no intervalo 0 <= n < 1 
 DECLARE
     n1 NUMERIC(5, 2);
     n2 INTEGER;
