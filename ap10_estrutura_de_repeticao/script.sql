@@ -1,4 +1,63 @@
 DO $$
+DECLARE
+    valores INT [] := ARRAY[
+        fn_valor_aleatorio_entre(1, 10),
+        fn_valor_aleatorio_entre(1, 10),
+        fn_valor_aleatorio_entre(1, 10),
+        fn_valor_aleatorio_entre(1, 10),
+        fn_valor_aleatorio_entre(1, 10)
+        ];
+    valor INT;
+    soma INT := 0;
+BEGIN
+    FOREACH valor IN ARRAY valores LOOP
+        RAISE NOTICE 'Valor da vez: %', valor;
+        soma := soma + valor;
+    END LOOP;
+    RAISE NOTICE 'Soma: %', soma;
+END;
+$$
+
+
+-- calculo de media
+/* DO $$
+DECLARE
+    aluno RECORD;
+    media NUMERIC(10, 2) := 0;
+    total INT;
+BEGIN
+    FOR aluno IN
+        SELECT * from tb_aluno
+    LOOP
+        RAISE NOTICE 'Nota: %', aluno.nota;
+        media := media + aluno.nota;
+    END LOOP;
+    SELECT COUNT(*) FROM tb_aluno INTO total;
+    RAISE NOTICE 'Media: %', media / total;
+END;
+$$ */
+
+-- SELECT * FROM tb_aluno;
+/*
+DO $$
+BEGIN
+    FOR i in 1 .. 10 LOOP
+        INSERT INTO 
+            tb_aluno(nota)
+        VALUES
+            (fn_valor_aleatorio_entre(0, 10));
+    END LOOP;
+END;
+$$ */
+
+/*
+CREATE TABLE tb_aluno(
+    cod_aluno SERIAL PRIMARY KEY,
+    nota INT
+); */
+
+/*
+DO $$
 BEGIN
     RAISE NOTICE'de 1 a 10, pulando de um em um';
     FOR i IN 1..10 LOOP
@@ -25,7 +84,7 @@ BEGIN
         RAISE NOTICE '%', i;
     END LOOP;
 END
-$$
+$$ */
 
 /* DO $$
 DECLARE
